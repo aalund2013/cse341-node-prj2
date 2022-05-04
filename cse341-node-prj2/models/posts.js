@@ -15,8 +15,7 @@ const PostSchema = mongoose.Schema({
   datePosted: {
     type: Date,
     default: () => Date.now(),
-    immutable: true,
-    required: true
+    immutable: true
   },
   tags: {
     type: [String]
