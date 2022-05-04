@@ -36,8 +36,14 @@ const new_post = async (req, res) => {
         tags: req.body.tags,
         images: req.body.images,
         photoDescription: req.body.photoDescription
-    })
-}
+    });
+    try {
+        const newPost = await post.save();
+        res.json(newPost);
+    } catch (err) {
+        res.json({ message: err });
+    }
+};
 
 module.exports = { 
     get_posts,
