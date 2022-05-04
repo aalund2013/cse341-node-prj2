@@ -32,6 +32,7 @@ const new_post = async (req, res) => {
         description: req.body.description,
         user: req.body.user,
         location: req.body.location,
+        datePosted: req.body.datePosted,
         tags: req.body.tags,
         images: req.body.images,
         photoDescription: req.body.photoDescription
