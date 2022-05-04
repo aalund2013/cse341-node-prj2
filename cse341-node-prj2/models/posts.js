@@ -1,5 +1,3 @@
-const { Timestamp } = require('bson');
-const { stringify } = require('json5');
 const mongoose = require('mongoose');
 
 const PostSchema = mongoose.Schema({
@@ -21,17 +19,14 @@ const PostSchema = mongoose.Schema({
     required: true
   },
   tags: {
-    type: [String],
+    type: [String]
   },
   images: {
-    data: Buffer,
-    contentType: String
+    type: [String]
 },
-  comments: [{
-    user: String,
-    content: String,
-    dateCommented: { type: Date, defaults: () => Date.now() },
-  }]
+  photoDescription: {
+    type: String,
+     }
 });
 
 module.exports = mongoose.model('posts',PostSchema);
