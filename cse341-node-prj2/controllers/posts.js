@@ -1,5 +1,6 @@
 const Posts = require('../models/posts');
 
+// Get all posts
 const get_posts = async (req, res) => {
     try{
         const posts = await Posts.find();
@@ -9,6 +10,7 @@ const get_posts = async (req, res) => {
     };
 };
 
+// Get specific post
 const get_post_by_id = async (req, res) => {
     try{
     const posts = await Posts.findById(req.params.postId);
@@ -18,15 +20,17 @@ const get_post_by_id = async (req, res) => {
     };
 };
 
-const get_users_posts = async (req, res) => {
-    try{
-    const posts = await Posts.find(req.params.user);
-    res.json(posts);
-    } catch(err){
-        res.json({message:err});
-    };
-};
+// Get all posts by specific user
+// const get_users_posts = async (req, res) => {
+//     try{
+//     const posts = await Posts.find(req.params.user);
+//     res.json(posts);
+//     } catch(err){
+//         res.json({message:err});
+//     };
+// };
 
+// Create new post
 const new_post = async (req, res) => {
     const post = new Posts({
         description: req.body.description,
@@ -48,6 +52,6 @@ const new_post = async (req, res) => {
 module.exports = { 
     get_posts,
     get_post_by_id,
-    get_users_posts,
+    // get_users_posts,
     new_post
 };
