@@ -13,6 +13,11 @@ router.get("/:postId", posts.get_post_by_id)
 // POST A NEW POST
 router.post("/", posts.new_post)
 
+// DELETE POST
+router.delete("/:postId", posts.deletePost)
+
+// UPDATE POST
+router.patch("/:postId", posts.updatePost)
 
 
 module.exports = router;
