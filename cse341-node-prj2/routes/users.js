@@ -1,4 +1,4 @@
-var posts = require('../controllers/users');
+var users = require('../controllers/users');
 var router = require('express').Router();
 
 // GET ALL USERS
@@ -14,7 +14,7 @@ router.post("/", users.newUser)
 router.delete("/:userId", users.deleteUser)
 
 // UPDATE USER
-router.patch("/:userId", users.updateUser)
+router.put("/:userId", users.updateUser)
 
 
 module.exports = router;

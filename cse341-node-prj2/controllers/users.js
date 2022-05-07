@@ -80,9 +80,10 @@ const updateUser = async (req, res) => {
         await updatedUser.save();
         res.send(updatedUser);
 
-    } catch {
-        res.status(404);
-        res.send({ error: "User doesn't exist." });
+    } catch(err) {
+        res.json({message:err});
+        // res.status(404);
+        // res.send({ error: "User doesn't exist." });
     }
 };
 

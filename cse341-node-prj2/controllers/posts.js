@@ -60,7 +60,7 @@ const new_post = async (req, res) => {
 
 const updatePost = async (req, res) => {
     try{
-        const updatedPost = await Posts.findById(req.params.PostId);
+        const updatedPost = await Posts.findById({ObjectId:req.params.PostId});
 
         if (req.body.description) {
             updatedPost.description = req.body.description

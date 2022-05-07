@@ -1,6 +1,6 @@
 const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
-const bcrypt = require(bcryptjs);
+// const bcrypt = require(bcryptjs);
 const validateEmail = (email) => {
   const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);

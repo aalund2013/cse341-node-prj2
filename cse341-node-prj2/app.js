@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const postRoute = require('./routes/posts');
+const userRoute = require('./routes/users');
 const swaggerUi = require('swagger-ui-express');
 const docRoute = require('./api-docs');
 const morgan = require('morgan');
@@ -42,6 +43,7 @@ app.use((req, res, next) => {
 
 
 app.use('/posts', postRoute);
+app.use('/users', userRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(docRoute));
 
 app.use((req, res, next) => {
