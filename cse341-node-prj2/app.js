@@ -33,6 +33,10 @@ app.use((req, res, next) => {
 app.use('/posts', postRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(docRoute));
 
+process.on('uncaughtException',(err,origin) => {
+  console.log(process.stderr.fd, 'Caught exception: ${err}\n' + 'Exception origin: ${origin}');
+});
+
 mongoose.connect(
   process.env.MONGODB_URI,{ UseNewUrlParser: true },
   () => console.log('connected to DB...')
