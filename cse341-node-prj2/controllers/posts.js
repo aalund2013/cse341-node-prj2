@@ -1,29 +1,28 @@
-const createError = require('http-errors');
 const Posts = require('../models/posts');
 
 // Get all posts
 const get_posts = async (req, res) => {
     try{
-        const posts = await Posts.find();
-        res.json(posts)
+        const posts = await Posts.find(); //.select('_id description user'); // select specific fields to be returned
+        res.status(200).json(posts)
     } catch(err){
         res.json({message:err});
     };
 };
 
 // Get specific post
-const get_post_by_id = async (req, res) => {
+const get_post_by_id = async (req, res, next) => {
     try{
     const posts = await Posts.findById(req.params.postId);
-    // if (posts) {
-    //     res.status(200).json(posts);
-    // } else {
-    //     res.status(404).json({message: 'No valid entry found for provided ID'});
-    // };
-    res.json(posts);
+        if (!posts) {
+            res.status(404).send({ error: "Post doesn't exist." });
+        } else {
+        res.json(posts)};
     } catch(err){
-        console.log(err);
-        res.json({message:err});
+        res.status(404);
+        res.send({ error: "Post doesn't exist." });
+        // console.log(err);
+        // res.json({message:err});
     };
 };
 
@@ -50,7 +49,10 @@ const new_post = async (req, res) => {
     });
     try {
         const newPost = await post.save();
-        res.json(newPost);
+        res.status(200).json(
+            { message: 'Post successful!',
+            results: newPost
+            });
     } catch (err) {
         res.json({ message: err });
     }
@@ -61,31 +63,31 @@ const updatePost = async (req, res) => {
         const updatedPost = await Posts.findById(req.params.PostId);
 
         if (req.body.description) {
-            contact.description = req.body.description
+            updatedPost.description = req.body.description
         };
 
         if (req.body.user) {
-            contact.user = req.body.user
+            updatedPost.user = req.body.user
         };
 
         if (req.body.location) {
-            contact.location = req.body.location
+            updatedPost.location = req.body.location
         };
 
         if (req.body.datePosted) {
-            contact.datePosted = req.body.datePosted
+            updatedPost.datePosted = req.body.datePosted
         };
 
         if (req.body.tags) {
-            contact.tags = req.body.tags
+            updatedPost.tags = req.body.tags
         };
 
         if (req.body.images) {
-            contact.images = req.body.images
+            updatedPost.images = req.body.images
         };
 
         if (req.body.photoDescription) {
-            contact.photoDescription = req.body.photoDescription
+            updatedPost.photoDescription = req.body.photoDescription
         };
 
         await updatedPost.save();
@@ -100,9 +102,12 @@ const updatePost = async (req, res) => {
 const deletePost = async (req, res) => {
     try{
         const deletedPost = await Posts.deleteOne({_id: req.params.postId});
-        res.json(deletedPost);
+        res.json({ message: "Successfully deleted post",
+                    details: deletedPost });
         } catch(err){
-            res.json({message:err});
+            res.status(404);
+            res.send({ error: "Post doesn't exist." });
+            // res.json({message:err});
         };
     };
 

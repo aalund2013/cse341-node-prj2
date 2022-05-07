@@ -21,7 +21,7 @@ const PostSchema = mongoose.Schema({
     type: [String]
   },
   images: {
-    type: [String]
+    type: [String] // ultimately want to store photo location - perhaps use aw3? for photo storage and just store a url
 },
   photoDescription: {
     type: String,
