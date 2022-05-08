@@ -116,6 +116,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "description": {
+                  "example": "any"
+                },
                 "user": {
                   "example": "any"
                 },

@@ -61,11 +61,11 @@ const new_post = async (req, res) => {
 
 const updatePost = async (req, res) => {
     try{
-        const updatedPost = await Posts.findOne({_id: ObjectId(req.params.postId)});
-
-        // if (req.body.description) {
-        //     updatedPost.description = req.body.description
-        // };
+        const updatedPost = await Posts.findById(req.params.postId);
+        
+        if (req.body.description) {
+            updatedPost.description = req.body.description
+        };
 
         if (req.body.user) {
             updatedPost.user = req.body.user
@@ -102,6 +102,7 @@ const updatePost = async (req, res) => {
         // res.send(updatedPost);
 
     } catch(err) {
+        console.log(err.stack)
         res.json({message:"errrrrrrrrrrr " + err});
         // res.status(404);
         // res.send({ error: "Post doesn't exist." });
