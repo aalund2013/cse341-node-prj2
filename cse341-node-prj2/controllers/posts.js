@@ -22,8 +22,6 @@ const get_post_by_id = async (req, res, next) => {
     } catch(err){
         res.status(404);
         res.send({ error: "Post doesn't exist." });
-        // console.log(err);
-        // res.json({message:err});
     };
 };
 
@@ -67,9 +65,9 @@ const updatePost = async (req, res) => {
             updatedPost.description = req.body.description
         };
 
-        if (req.body.user) {
-            updatedPost.user = req.body.user
-        };
+        // if (req.body.user) {
+        //     updatedPost.user = req.body.user
+        // };
 
         if (req.body.location) {
             updatedPost.location = req.body.location

@@ -47,7 +47,7 @@ const newUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
     try{
-        const updatedUser = await Users.findById(req.params.UserId);
+        const updatedUser = await Users.findById(req.params.userId);
         console.log(updatedUser)
         if (req.body.firstName) {
             updatedUser.firstName = req.body.firstName
@@ -57,9 +57,9 @@ const updateUser = async (req, res) => {
             updatedUser.lastName = req.body.lastName
         };
 
-        // if (req.body.email) {
-        //     updatedUser.email = req.body.email
-        // };
+        if (req.body.email) {
+            updatedUser.email = req.body.email
+        };
 
         if (req.body.username) {
             updatedUser.username = req.body.username
