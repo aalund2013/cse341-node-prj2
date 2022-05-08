@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const PostSchema = mongoose.Schema({
   description: {
     type: String,
-    required: true
+    // required: true
   },
   user: {
     type: String,

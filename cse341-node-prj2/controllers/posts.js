@@ -1,4 +1,5 @@
 const Posts = require('../models/posts');
+const { ObjectId } = require("mongodb")
 
 // Get all posts
 const get_posts = async (req, res) => {
@@ -60,11 +61,11 @@ const new_post = async (req, res) => {
 
 const updatePost = async (req, res) => {
     try{
-        const updatedPost = await Posts.findById({ObjectId:req.params.PostId});
+        const updatedPost = await Posts.findOne({_id: ObjectId(req.params.postId)});
 
-        if (req.body.description) {
-            updatedPost.description = req.body.description
-        };
+        // if (req.body.description) {
+        //     updatedPost.description = req.body.description
+        // };
 
         if (req.body.user) {
             updatedPost.user = req.body.user
@@ -74,9 +75,9 @@ const updatePost = async (req, res) => {
             updatedPost.location = req.body.location
         };
 
-        if (req.body.datePosted) {
-            updatedPost.datePosted = req.body.datePosted
-        };
+        // if (req.body.datePosted) {
+        //     updatedPost.datePosted = req.body.datePosted
+        // };
 
         if (req.body.tags) {
             updatedPost.tags = req.body.tags
@@ -90,12 +91,20 @@ const updatePost = async (req, res) => {
             updatedPost.photoDescription = req.body.photoDescription
         };
 
-        await updatedPost.save();
-        res.send(updatedPost);
+        await updatedPost.save(function (err) {
+            if (err) {
+                res.status(500)
+                .json(err || 'An error occurred while updating');
+            } else {
+                res.status(204).send(updatedPost);
+            }
+        });
+        // res.send(updatedPost);
 
-    } catch {
-        res.status(404);
-        res.send({ error: "Post doesn't exist." });
+    } catch(err) {
+        res.json({message:"errrrrrrrrrrr " + err});
+        // res.status(404);
+        // res.send({ error: "Post doesn't exist." });
     }
 };
 

@@ -17,7 +17,7 @@ router.post("/", posts.new_post)
 router.delete("/:postId", posts.deletePost)
 
 // UPDATE POST
-router.put("/:postId", posts.updatePost)
+router.patch("/:postId", posts.updatePost)
 
 
 module.exports = router;

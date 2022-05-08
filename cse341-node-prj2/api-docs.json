@@ -5,10 +5,10 @@
     "description": "A place to share photos",
     "version": "1.0.0"
   },
-  "host": "https://afternoon-island-68440.herokuapp.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/posts/": {
@@ -101,7 +101,7 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "description": "",
         "parameters": [
           {
@@ -116,16 +116,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "description": {
-                  "example": "any"
-                },
                 "user": {
                   "example": "any"
                 },
                 "location": {
-                  "example": "any"
-                },
-                "datePosted": {
                   "example": "any"
                 },
                 "tags": {
@@ -145,8 +139,11 @@
           "200": {
             "description": "OK"
           },
-          "404": {
-            "description": "Not Found"
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -238,7 +235,7 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "description": "",
         "parameters": [
           {
@@ -257,9 +254,6 @@
                   "example": "any"
                 },
                 "lastName": {
-                  "example": "any"
-                },
-                "email": {
                   "example": "any"
                 },
                 "username": {

@@ -5,16 +5,16 @@ var router = require('express').Router();
 router.get("/", users.getUsers);
 
 // GET SPECIFIC USER
-router.get("/:userId", users.getUserById)
+router.get("/:userId", users.getUserById);
 
 // POST A NEW USER
-router.post("/", users.newUser)
+router.post("/", users.newUser);
 
 // DELETE USER
-router.delete("/:userId", users.deleteUser)
+router.delete("/:userId", users.deleteUser);
 
 // UPDATE USER
-router.put("/:userId", users.updateUser)
+router.patch("/:userId", users.updateUser);
 
 
 module.exports = router;

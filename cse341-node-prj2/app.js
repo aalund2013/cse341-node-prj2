@@ -46,24 +46,24 @@ app.use('/posts', postRoute);
 app.use('/users', userRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(docRoute));
 
-app.use((req, res, next) => {
-  const error = new Error('Not found');
-  err.status = 404;
-  next(error);
-});
-
-app.use((error, req, res, next) => {
-  res.status(error.status || 500);
-  res.json({
-    error: {
-      message: error.message
-    }
-  });
-});
-
-// process.on('uncaughtException',(err,origin) => {
-//   console.log(process.stderr.fd, 'Caught exception: ${err}\n' + 'Exception origin: ${origin}');
+// app.use((req, res, next) => {
+//   const error = new Error('Not found');
+//   err.status = 404;
+//   next(error);
 // });
+
+// app.use((error, req, res, next) => {
+//   res.status(error.status || 500);
+//   res.json({
+//     error: {
+//       message: error.message
+//     }
+//   });
+// });
+
+process.on('uncaughtException',(err,origin) => {
+  console.log(process.stderr.fd, 'Caught exception: ${err}\n' + 'Exception origin: ${origin}');
+});
 
 mongoose.connect(
   process.env.MONGODB_URI,{ UseNewUrlParser: true },
