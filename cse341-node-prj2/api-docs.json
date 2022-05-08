@@ -5,10 +5,10 @@
     "description": "A place to share photos",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "afternoon-island-68440.herokuapp.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/posts/": {
@@ -117,9 +117,6 @@
               "type": "object",
               "properties": {
                 "description": {
-                  "example": "any"
-                },
-                "user": {
                   "example": "any"
                 },
                 "location": {
@@ -257,6 +254,9 @@
                   "example": "any"
                 },
                 "lastName": {
+                  "example": "any"
+                },
+                "email": {
                   "example": "any"
                 },
                 "username": {

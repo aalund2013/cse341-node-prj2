@@ -5,9 +5,9 @@ const doc = {
     title: 'Posts API',
     description: 'A place to share photos',
   },
-  host: 'localhost:8080',//'afternoon-island-68440.herokuapp.com',
+  host: 'afternoon-island-68440.herokuapp.com', //'localhost:8080',
   
-  schemes: ['http'],
+  schemes: ['https'],
 };
 
 const outputFile = './api-docs.json';
