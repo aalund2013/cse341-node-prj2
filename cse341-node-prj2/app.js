@@ -7,6 +7,7 @@ const swaggerUi = require('swagger-ui-express');
 const docRoute = require('./api-docs');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
+const path = require('path');
 require('dotenv/config');
 
 const port = process.env.PORT || 8080;
@@ -28,7 +29,8 @@ const app = express();
 app.engine('.hbs', exphbs.engine({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
-
+// Static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
