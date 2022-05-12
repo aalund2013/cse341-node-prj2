@@ -10,11 +10,12 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const passport = require('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 require('dotenv/config');
 require('./models/passport-setup')(passport);
 const port = process.env.PORT || 8080;
 const app = express();
-
+// .
 // const multer = require('multer');
   
 // const storage = multer.diskStorage({
@@ -36,7 +37,7 @@ app.use(session({
   secret: 'angel in the night',
   resave: false,
   saveUninitialized: false,
-  // store
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
   // cookie: {secure: true} (doesn't work without https)
 }));
 
