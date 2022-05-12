@@ -64,6 +64,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/', require('./routes/index'))
+app.use('/auth', require('./routes/auth'))
 app.use('/posts', postRoute);
 app.use('/users', userRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(docRoute));
