@@ -8,8 +8,10 @@ const docRoute = require('./api-docs');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const passport = require('passport');
+const session = require('express-session');
 require('dotenv/config');
-
+require('./models/passport-setup')(passport);
 const port = process.env.PORT || 8080;
 const app = express();
 
@@ -29,6 +31,18 @@ const app = express();
 app.engine('.hbs', exphbs.engine({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
+// Sessions
+app.use(session({
+  secret: 'angel in the night',
+  resave: false,
+  saveUninitialized: false,
+  // store
+  // cookie: {secure: true} (doesn't work without https)
+}));
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
 // Static folder
 app.use(express.static(path.join(__dirname, 'public')));
 

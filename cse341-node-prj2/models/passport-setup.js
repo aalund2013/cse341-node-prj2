@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const mongoose = require('mongoose');
 
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
