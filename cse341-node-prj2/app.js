@@ -6,6 +6,7 @@ const userRoute = require('./routes/users');
 const swaggerUi = require('swagger-ui-express');
 const docRoute = require('./api-docs');
 const morgan = require('morgan');
+const exphbs = require('express-handlebars');
 require('dotenv/config');
 
 const port = process.env.PORT || 8080;
@@ -24,6 +25,10 @@ const app = express();
   
 // const upload = multer({ storage: storage });
 // const imgModel = require('./models');
+app.engine('.hbs', exphbs.engine({defaultLayout: 'main', extname: '.hbs'}));
+app.set('view engine', '.hbs');
+
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,7 +46,8 @@ app.use((req, res, next) => {
   next();
 });
 
-
+// Routes
+app.use('/', require('./routes/index'))
 app.use('/posts', postRoute);
 app.use('/users', userRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(docRoute));
