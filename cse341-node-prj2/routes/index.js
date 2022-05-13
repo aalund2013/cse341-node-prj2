@@ -5,7 +5,7 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 // Login/Landing page
 // Route GET /
 router.get('/', ensureGuest, (req, res) => {
-  res.render('Login', {
+  res.render('login', {
     layout: 'login',
   });
 });

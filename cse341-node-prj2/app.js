@@ -34,7 +34,7 @@ app.set('view engine', '.hbs');
 
 // Sessions
 app.use(session({
-  secret: 'angel in the night',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
