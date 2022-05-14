@@ -7,7 +7,7 @@ const doc = {
   },
   host: 'afternoon-island-68440.herokuapp.com', //'localhost:8080',
   
-  schemes: ['https'],
+  schemes: ['http'],
 };
 
 const outputFile = './api-docs.json';
