@@ -27,8 +27,8 @@ const getUserById = async (req, res, next) => {
 };
 
 // Create new user
+// #swagger:ignore
 const newUser = async (req, res) => {
-    // #swagger:ignore
     const user = new Users({
         googleId: req.body.googleId,
         displayName: req.body.displayName,
@@ -48,8 +48,8 @@ const newUser = async (req, res) => {
     }
 };
 
+// #swagger:ignore
 const updateUser = async (req, res) => {
-    // #swagger:ignore
     try{
         const updatedUser = await Users.findById(req.params.userId);
         console.log(updatedUser)
