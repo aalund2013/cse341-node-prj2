@@ -11,7 +11,8 @@ module.exports = function(passport) {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "/auth/google/callback" || "http://afternoon-island-68440.herokuapp.com/auth/google/callback"
+        callbackURL: "https://afternoon-island-68440.herokuapp.com/auth/google/callback"
+        // callbackURL: "/auth/google/callback"
       },
       async (accessToken, refreshToken, profile, done) => {
         const newUser = {

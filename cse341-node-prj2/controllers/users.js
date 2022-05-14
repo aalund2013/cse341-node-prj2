@@ -2,7 +2,7 @@ const Users = require('../models/users');
 
 // Get all posts
 const getUsers = async (req, res) => {
-    // #swagger.tags = ['User']
+    // #swagger.tags = ['Users']
     try{
         const users = await Users.find(); //.select('_id description user'); // select specific fields to be returned
         res.status(200).json(users)
@@ -13,7 +13,7 @@ const getUsers = async (req, res) => {
 
 // Get specific post
 const getUserById = async (req, res, next) => {
-    // #swagger.tags = ['User']
+    // #swagger.tags = ['Users']
     try{
     const users = await Users.findById(req.params.googleId);
         if (!users) {
@@ -28,7 +28,7 @@ const getUserById = async (req, res, next) => {
 
 // Create new user
 const newUser = async (req, res) => {
-    // #swagger.tags = ['User']
+    // #swagger.tags = ['Users']
     // #swagger.ignore = true
     const user = new Users({
         googleId: req.body.googleId,
@@ -50,7 +50,7 @@ const newUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-    // #swagger.tags = ['User']
+    // #swagger.tags = ['Users']
     // #swagger.ignore = true
     try{
         const updatedUser = await Users.findById(req.params.userId);
@@ -86,7 +86,7 @@ const updateUser = async (req, res) => {
 }; 
 
 const deleteUser = async (req, res) => {
-    // #swagger.tags = ['User']
+    // #swagger.tags = ['Users']
     try{
         const deletedUser = await Users.deleteOne({_id: req.params.googleId});
         res.json({ message: "Successfully deleted user",
