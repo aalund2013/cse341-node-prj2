@@ -1,17 +1,52 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Contacts API",
-    "description": "A list of my contacts",
+    "title": "Posts API",
+    "description": "A place to share photos",
     "version": "1.0.0"
   },
-  "host": "evening-shelf-20122.herokuapp.com",
+  "host": "afternoon-island-68440.herokuapp.com",
   "basePath": "/",
   "schemes": [
     "http"
   ],
   "paths": {
-    "/contacts/": {
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/dashboard": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/auth/google": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/auth/google/callback": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/auth/logout": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/": {
       "get": {
         "description": "",
         "parameters": [],
@@ -39,19 +74,13 @@
                 "email": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "username": {
                   "example": "any"
                 },
                 "birthday": {
                   "example": "any"
                 },
-                "eyeColor": {
-                  "example": "any"
-                },
-                "hairColor": {
-                  "example": "any"
-                },
-                "residesIn": {
+                "password": {
                   "example": "any"
                 }
               }
@@ -65,116 +94,15 @@
         }
       }
     },
-    "/contacts/{contactId}": {
+    "/users/{userId}": {
       "get": {
         "description": "",
         "parameters": [
           {
-            "name": "contactId",
+            "name": "userId",
             "in": "path",
             "required": true,
             "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "patch": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "contactId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "favoriteColor": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                },
-                "eyeColor": {
-                  "example": "any"
-                },
-                "hairColor": {
-                  "example": "any"
-                },
-                "residesIn": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "contactId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "favoriteColor": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                },
-                "eyeColor": {
-                  "example": "any"
-                },
-                "hairColor": {
-                  "example": "any"
-                },
-                "residesIn": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
@@ -190,7 +118,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "contactId",
+            "name": "userId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -199,6 +127,192 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "username": {
+                  "example": "any"
+                },
+                "groupsJoined": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/posts/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "example": "any"
+                },
+                "user": {
+                  "example": "any"
+                },
+                "location": {
+                  "example": "any"
+                },
+                "datePosted": {
+                  "example": "any"
+                },
+                "tags": {
+                  "example": "any"
+                },
+                "images": {
+                  "example": "any"
+                },
+                "photoDescription": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/posts/{postId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "example": "any"
+                },
+                "location": {
+                  "example": "any"
+                },
+                "tags": {
+                  "example": "any"
+                },
+                "images": {
+                  "example": "any"
+                },
+                "photoDescription": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
