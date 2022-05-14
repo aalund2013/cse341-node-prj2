@@ -27,61 +27,60 @@ const getUserById = async (req, res, next) => {
 };
 
 // Create new user
-// #swagger:ignore
-const newUser = async (req, res) => {
-    const user = new Users({
-        googleId: req.body.googleId,
-        displayName: req.body.displayName,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        image: req.body.image,
-        createdAt: req.body.createdAt
-    });
-    try {
-        const newUser = await user.save();
-        res.status(200).json(
-            { message: 'User created!',
-            results: newUser
-            });
-    } catch (err) {
-        res.json({ message: err });
-    }
-};
+// const newUser = async (req, res) => {
+//     const user = new Users({
+//         googleId: req.body.googleId,
+//         displayName: req.body.displayName,
+//         firstName: req.body.firstName,
+//         lastName: req.body.lastName,
+//         image: req.body.image,
+//         createdAt: req.body.createdAt
+//     });
+//     try {
+//         const newUser = await user.save();
+//         res.status(200).json(
+//             { message: 'User created!',
+//             results: newUser
+//             });
+//     } catch (err) {
+//         res.json({ message: err });
+//     }
+// };
 
-// #swagger:ignore
-const updateUser = async (req, res) => {
-    try{
-        const updatedUser = await Users.findById(req.params.userId);
-        console.log(updatedUser)
-        if (req.body.displayName) {
-            updatedUser.firstName = req.body.firstName
-        };
 
-        if (req.body.firstName) {
-            updatedUser.firstName = req.body.firstName
-        };
+// const updateUser = async (req, res) => {
+//     try{
+//         const updatedUser = await Users.findById(req.params.userId);
+//         console.log(updatedUser)
+//         if (req.body.displayName) {
+//             updatedUser.firstName = req.body.firstName
+//         };
 
-        if (req.body.lastName) {
-            updatedUser.lastName = req.body.lastName
-        };
+//         if (req.body.firstName) {
+//             updatedUser.firstName = req.body.firstName
+//         };
 
-        if (req.body.image) {
-            updatedUser.image = req.body.image
-        };
+//         if (req.body.lastName) {
+//             updatedUser.lastName = req.body.lastName
+//         };
 
-        if (req.body.createdAt) {
-            updatedUser.createdAt = req.body.createdAt
-        };
+//         if (req.body.image) {
+//             updatedUser.image = req.body.image
+//         };
 
-        await updatedUser.save();
-        res.send(updatedUser);
+//         if (req.body.createdAt) {
+//             updatedUser.createdAt = req.body.createdAt
+//         };
 
-    } catch(err) {
-        res.json({message:err});
-        // res.status(404);
-        // res.send({ error: "User doesn't exist." });
-    }
-}; 
+//         await updatedUser.save();
+//         res.send(updatedUser);
+
+//     } catch(err) {
+//         res.json({message:err});
+//         // res.status(404);
+//         // res.send({ error: "User doesn't exist." });
+//     }
+// }; 
 
 const deleteUser = async (req, res) => {
     // #swagger.tags = ['Users']
@@ -98,7 +97,7 @@ const deleteUser = async (req, res) => {
 module.exports = { 
     getUsers,
     getUserById,
-    newUser,
-    updateUser,
+    // newUser,
+    // updateUser,
     deleteUser
 };

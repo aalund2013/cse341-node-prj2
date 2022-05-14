@@ -8,13 +8,13 @@ router.get("/", users.getUsers);
 router.get("/:userId", users.getUserById);
 
 // POST A NEW USER
-router.post("/", users.newUser);
+// router.post("/", users.newUser);
 
 // DELETE USER
 router.delete("/:userId", users.deleteUser);
 
 // UPDATE USER
-router.patch("/:userId", users.updateUser);
+// router.patch("/:userId", users.updateUser);
 
 
 
