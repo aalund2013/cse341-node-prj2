@@ -29,6 +29,7 @@ const getUserById = async (req, res, next) => {
 // Create new user
 const newUser = async (req, res) => {
     // #swagger.tags = ['User']
+    // #swagger.ignore = true
     const user = new Users({
         googleId: req.body.googleId,
         displayName: req.body.displayName,

@@ -48,6 +48,9 @@
     },
     "/users/": {
       "get": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [],
         "responses": {
@@ -58,44 +61,15 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "username": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
+        "parameters": [],
+        "responses": {}
       }
     },
     "/users/{userId}": {
       "get": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -115,6 +89,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -141,47 +118,16 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "username": {
-                  "example": "any"
-                },
-                "groupsJoined": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
+        "responses": {}
       }
     },
     "/posts/": {
       "get": {
+        "tags": [
+          "Posts"
+        ],
         "description": "",
         "parameters": [],
         "responses": {
@@ -191,6 +137,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Posts"
+        ],
         "description": "",
         "parameters": [
           {
@@ -206,9 +155,6 @@
                   "example": "any"
                 },
                 "location": {
-                  "example": "any"
-                },
-                "datePosted": {
                   "example": "any"
                 },
                 "tags": {
@@ -233,6 +179,9 @@
     },
     "/posts/{postId}": {
       "get": {
+        "tags": [
+          "Posts"
+        ],
         "description": "",
         "parameters": [
           {
@@ -252,6 +201,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Posts"
+        ],
         "description": "",
         "parameters": [
           {
@@ -271,6 +223,9 @@
         }
       },
       "patch": {
+        "tags": [
+          "Posts"
+        ],
         "description": "",
         "parameters": [
           {
