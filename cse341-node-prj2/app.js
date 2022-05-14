@@ -12,7 +12,8 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const passport = require('passport');
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI });
+// const MongoStore = require('connect-mongo')(session);
 require('dotenv/config');
 require('./models/passport-setup')(passport);
 const port = process.env.PORT || 8080;
@@ -39,7 +40,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
+  // store: new MongoStore({ mongooseConnection: mongoose.connection })
   // cookie: {secure: true} (doesn't work without https)
 }));
 
