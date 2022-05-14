@@ -3,6 +3,7 @@ const { ObjectId } = require("mongodb")
 
 // Get all posts
 const get_posts = async (req, res) => {
+    // #swagger.tags = ['Posts']
     try{
         const posts = await Posts.find(); //.select('_id description user'); // select specific fields to be returned
         res.status(200).json(posts)
@@ -13,6 +14,7 @@ const get_posts = async (req, res) => {
 
 // Get specific post
 const get_post_by_id = async (req, res, next) => {
+    // #swagger.tags = ['Posts']
     try{
     const posts = await Posts.findById(req.params.postId);
         if (!posts) {
@@ -37,11 +39,12 @@ const get_post_by_id = async (req, res, next) => {
 
 // Create new post
 const new_post = async (req, res) => {
+    // #swagger.tags = ['Posts']
     const post = new Posts({
         description: req.body.description,
         user: req.body.user,
         location: req.body.location,
-        datePosted: req.body.datePosted,
+        // datePosted: req.body.datePosted,
         tags: req.body.tags,
         images: req.body.images,
         photoDescription: req.body.photoDescription
@@ -58,6 +61,7 @@ const new_post = async (req, res) => {
 };
 
 const updatePost = async (req, res) => {
+    // #swagger.tags = ['Posts']
     try{
         const updatedPost = await Posts.findById(req.params.postId);
         
@@ -101,13 +105,14 @@ const updatePost = async (req, res) => {
 
     } catch(err) {
         console.log(err.stack)
-        res.json({message:"errrrrrrrrrrr " + err});
+        res.json({message:"error: " + err});
         // res.status(404);
         // res.send({ error: "Post doesn't exist." });
     }
 };
 
 const deletePost = async (req, res) => {
+    // #swagger.tags = ['Posts']
     try{
         const deletedPost = await Posts.deleteOne({_id: req.params.postId});
         res.json({ message: "Successfully deleted post",

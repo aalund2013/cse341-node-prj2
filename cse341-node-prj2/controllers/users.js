@@ -2,6 +2,7 @@ const Users = require('../models/users');
 
 // Get all posts
 const getUsers = async (req, res) => {
+    // #swagger.tags = ['User']
     try{
         const users = await Users.find(); //.select('_id description user'); // select specific fields to be returned
         res.status(200).json(users)
@@ -12,8 +13,9 @@ const getUsers = async (req, res) => {
 
 // Get specific post
 const getUserById = async (req, res, next) => {
+    // #swagger.tags = ['User']
     try{
-    const users = await Users.findById(req.params.userId);
+    const users = await Users.findById(req.params.googleId);
         if (!users) {
             res.status(404).send({ error: "User doesn't exist." });
         } else {
@@ -26,13 +28,14 @@ const getUserById = async (req, res, next) => {
 
 // Create new user
 const newUser = async (req, res) => {
+    // #swagger.tags = ['User']
     const user = new Users({
+        googleId: req.body.googleId,
+        displayName: req.body.displayName,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        email: req.body.email,
-        username: req.body.username,
-        birthday: req.body.birthday,
-        password: req.body.password
+        image: req.body.image,
+        createdAt: req.body.createdAt
     });
     try {
         const newUser = await user.save();
@@ -46,9 +49,15 @@ const newUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
+    // #swagger.tags = ['User']
+    // #swagger.ignore = true
     try{
         const updatedUser = await Users.findById(req.params.userId);
         console.log(updatedUser)
+        if (req.body.displayName) {
+            updatedUser.firstName = req.body.firstName
+        };
+
         if (req.body.firstName) {
             updatedUser.firstName = req.body.firstName
         };
@@ -57,24 +66,12 @@ const updateUser = async (req, res) => {
             updatedUser.lastName = req.body.lastName
         };
 
-        if (req.body.email) {
-            updatedUser.email = req.body.email
+        if (req.body.image) {
+            updatedUser.image = req.body.image
         };
 
-        if (req.body.username) {
-            updatedUser.username = req.body.username
-        };
-
-        if (req.body.groupsJoined) {
-            updatedUser.groupsJoined = req.body.groupsJoined
-        };
-
-        if (req.body.birthday) {
-            updatedUser.birthday = req.body.birthday
-        };
-
-        if (req.body.password) {
-            updatedUser.password = req.body.password
+        if (req.body.createdAt) {
+            updatedUser.createdAt = req.body.createdAt
         };
 
         await updatedUser.save();
@@ -85,11 +82,12 @@ const updateUser = async (req, res) => {
         // res.status(404);
         // res.send({ error: "User doesn't exist." });
     }
-};
+}; 
 
 const deleteUser = async (req, res) => {
+    // #swagger.tags = ['User']
     try{
-        const deletedUser = await Users.deleteOne({_id: req.params.userId});
+        const deletedUser = await Users.deleteOne({_id: req.params.googleId});
         res.json({ message: "Successfully deleted user",
                     details: deletedUser });
         } catch(err){
