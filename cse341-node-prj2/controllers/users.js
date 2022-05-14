@@ -15,7 +15,7 @@ const getUsers = async (req, res) => {
 const getUserById = async (req, res, next) => {
     // #swagger.tags = ['Users']
     try{
-    const users = await Users.findById(req.params.googleId);
+    const users = await Users.findById(req.params.userId);
         if (!users) {
             res.status(404).send({ error: "User doesn't exist." });
         } else {
@@ -28,7 +28,6 @@ const getUserById = async (req, res, next) => {
 
 // Create new user
 const newUser = async (req, res) => {
-    // #swagger.tags = ['Users']
     // #swagger.ignore = true
     const user = new Users({
         googleId: req.body.googleId,
@@ -50,7 +49,6 @@ const newUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-    // #swagger.tags = ['Users']
     // #swagger.ignore = true
     try{
         const updatedUser = await Users.findById(req.params.userId);
