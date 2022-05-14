@@ -86,7 +86,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     // #swagger.tags = ['Users']
     try{
-        const deletedUser = await Users.deleteOne({_id: req.params.googleId});
+        const deletedUser = await Users.deleteOne({_id: req.params.userId});
         res.json({ message: "Successfully deleted user",
                     details: deletedUser });
         } catch(err){
