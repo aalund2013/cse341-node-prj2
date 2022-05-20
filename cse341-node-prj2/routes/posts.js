@@ -5,7 +5,7 @@ var router = require('express').Router();
 router.get("/", posts.get_posts);
 
 // GET POST BY USER
-router.get("/:user", posts.get_users_posts);
+router.get("/username/:user", posts.get_users_posts);
 
 // GET SPECIFIC POST
 router.get("/:postId", posts.get_post_by_id);

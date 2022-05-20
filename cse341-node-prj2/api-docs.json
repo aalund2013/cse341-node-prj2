@@ -160,7 +160,7 @@
         }
       }
     },
-    "/posts/{user}": {
+    "/posts/username/{user}": {
       "get": {
         "description": "",
         "parameters": [
