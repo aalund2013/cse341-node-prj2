@@ -5,19 +5,19 @@ var router = require('express').Router();
 router.get("/", posts.get_posts);
 
 // GET SPECIFIC POST
-router.get("/:postId", posts.get_post_by_id)
+router.get("/:postId", posts.get_post_by_id);
 
 // GET POST BY USER
-router.get("/user", posts.get_users_posts)
+router.get("/:user", posts.get_users_posts);
 
 // POST A NEW POST
-router.post("/", posts.new_post)
+router.post("/", posts.new_post);
 
 // DELETE POST
-router.delete("/:postId", posts.deletePost)
+router.delete("/:postId", posts.deletePost);
 
 // UPDATE POST
-router.patch("/:postId", posts.updatePost)
+router.patch("/:postId", posts.updatePost);
 
 
 module.exports = router;
