@@ -28,14 +28,14 @@ const get_post_by_id = async (req, res, next) => {
 };
 
 // Get all posts by specific user
-// const get_users_posts = async (req, res) => {
-//     try{
-//     const posts = await Posts.find(req.params.user);
-//     res.json(posts);
-//     } catch(err){
-//         res.json({message:err});
-//     };
-// };
+const get_users_posts = async (req, res) => {
+    try{
+    const posts = await Posts.findOne(req.params.user);
+    res.json(posts);
+    } catch(err){
+        res.json({message:err});
+    };
+};
 
 // Create new post
 const new_post = async (req, res) => {
@@ -129,6 +129,6 @@ module.exports = {
     get_post_by_id,
     deletePost,
     updatePost,
-    // get_users_posts,
+    get_users_posts,
     new_post
 };
