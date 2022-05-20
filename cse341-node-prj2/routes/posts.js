@@ -10,7 +10,6 @@ router.get("/:user", posts.get_users_posts);
 // GET SPECIFIC POST
 router.get("/:postId", posts.get_post_by_id);
 
-
 // POST A NEW POST
 router.post("/", posts.new_post);
 
