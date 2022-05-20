@@ -34,7 +34,7 @@ const get_users_posts = async (req, res) => {
     const posts = await Posts.find( {user: req.params.user} );
     res.json(posts);
     } catch(err){
-        res.json({message:err});
+        res.json({message: "You are getting an errrrrorrrr: " + err});
     };
 };
 
