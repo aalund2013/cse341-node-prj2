@@ -160,6 +160,24 @@
         }
       }
     },
+    "/posts/username/{user}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/posts/{postId}": {
       "get": {
         "tags": [
@@ -251,24 +269,6 @@
           },
           "500": {
             "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/posts/{user}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "user",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
