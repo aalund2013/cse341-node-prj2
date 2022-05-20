@@ -28,8 +28,8 @@ const get_post_by_id = async (req, res, next) => {
 };
 
 // Get all posts by specific user
-// #swagger.tags = ['Posts']
 const get_users_posts = async (req, res) => {
+    // #swagger.tags = ['Posts']
     try{
     const posts = await Posts.find( {user: req.params.user} );
     res.json(posts);
