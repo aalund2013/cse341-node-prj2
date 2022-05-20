@@ -30,7 +30,7 @@ const get_post_by_id = async (req, res, next) => {
 // Get all posts by specific user
 const get_users_posts = async (req, res) => {
     try{
-    const posts = await Posts.findOne(req.params.user);
+    const posts = await Posts.find( {"users": req.params.user} );
     res.json(posts);
     } catch(err){
         res.json({message:err});
