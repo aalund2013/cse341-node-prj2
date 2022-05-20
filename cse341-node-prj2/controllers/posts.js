@@ -31,7 +31,7 @@ const get_post_by_id = async (req, res, next) => {
 // #swagger.tags = ['Posts']
 const get_users_posts = async (req, res) => {
     try{
-    const posts = await Posts.find( {user: req.params.user} );
+    const posts = await Posts.find(req.params.user);
     res.json(posts);
     } catch(err){
         res.json({message:err});
